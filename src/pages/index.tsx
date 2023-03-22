@@ -1,7 +1,8 @@
 import React from "react";
+import Navigation from "../components/home/Navigation";
 
-const index = () => {
-  return <div>Hello</div>;
-};
+function Home() {
+  return <main>home</main>;
+}
 
-export default index;
+export default Home;
