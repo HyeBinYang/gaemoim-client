@@ -21,7 +21,6 @@ const HomeTab = () => {
           size="small"
           checked={toggle}
           onClick={e => {
-            console.log(toggle);
             setToggle(!toggle);
           }}
         >

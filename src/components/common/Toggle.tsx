@@ -1,3 +1,4 @@
+import colors from "@/src/style/color";
 import React from "react";
 import styled, { css } from "styled-components";
 
@@ -32,7 +33,7 @@ const Trigger = styled.label<{
     switch (color) {
       case "primary": {
         return css`
-          background-color: ${checked ? "skyblue" : "lightgray"};
+          background-color: ${checked ? colors.lightblue[200] : colors.grey[300]};
 
           & > .toggle__button {
             background-color: #fff;
