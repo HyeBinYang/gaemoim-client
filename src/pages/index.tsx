@@ -1,8 +1,12 @@
 import React from "react";
-import Navigation from "../components/home/Navigation";
+import HomeTab from "../components/home/HomeTab";
 
-function Home() {
-  return <main>home</main>;
-}
+const Home = () => {
+  return (
+    <main>
+      <HomeTab />
+    </main>
+  );
+};
 
 export default Home;
