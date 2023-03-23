@@ -1,9 +1,11 @@
 import { combineReducers } from "redux";
 import { HYDRATE } from "next-redux-wrapper";
 import modalReducer from "./modal";
+import homeReducer from "./home";
 
 const combinedReducer = combineReducers({
   modalReducer,
+  homeReducer,
 });
 
 const rootReducer: typeof combinedReducer = (state, action) => {

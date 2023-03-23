@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-interface TextProps {
+interface TextProps extends React.HTMLProps<HTMLElement> {
   as?: keyof JSX.IntrinsicElements;
-  children: React.ReactNode;
 }
 
 const Wrapper = styled.div``;
 
-export default function Text({ as = "p", children }: TextProps) {
+const Text = ({ as = "p", children }: TextProps) => {
   return <Wrapper as={as}>{children}</Wrapper>;
-}
+};
+
+export default Text;

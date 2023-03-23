@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 
 const Container = styled.header`
-  max-width: 1100px;
+  max-width: 1280px;
   margin: 0 auto;
   display: flex;
   align-items: center;
