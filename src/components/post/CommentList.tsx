@@ -22,7 +22,7 @@ const CommentList: React.FC<CommentListProps> = ({ comments }) => {
       <Title>댓글 {comments.length}</Title>
       <PostCommentInput />
       {comments.map(comment => (
-        <PostCommentItem {...comment} />
+        <PostCommentItem key={comment._id} {...comment} />
       ))}
     </Wrapper>
   );

@@ -8,12 +8,13 @@ import { Post } from "@/src/types/post";
 import { format } from "date-fns";
 
 const Wrapper = styled.div`
-  width: 300px;
+  width: 100%;
   height: 300px;
   border-radius: 12px;
   padding: 40px 20px;
   box-sizing: border-box;
   background-color: #fff;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
   cursor: pointer;
   transition: transform 0.15s linear;
   display: flex;
@@ -21,14 +22,6 @@ const Wrapper = styled.div`
 
   &:hover {
     transform: scale(1.05);
-  }
-
-  @media screen and (max-width: 1000px) {
-    width: 320px;
-  }
-
-  @media screen and (max-width: 720px) {
-    width: 100%;
   }
 `;
 

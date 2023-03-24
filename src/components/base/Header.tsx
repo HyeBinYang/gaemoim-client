@@ -1,4 +1,5 @@
 import { open } from "@/src/store/modal";
+import { hideBodyScroll } from "@/src/utils/style";
 import Link from "next/link";
 import React from "react";
 import { useDispatch } from "react-redux";
@@ -57,6 +58,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const handleClickLogin = () => {
+    hideBodyScroll();
     dispatch(open(<LoginModal />));
   };
 

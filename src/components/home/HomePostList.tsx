@@ -14,16 +14,29 @@ const Wrapper = styled.section`
   padding: 20px 30px 40px;
   background-color: ${colors.grey[100]};
 
-  @media screen and (max-width: 1280px) {
-    width: 960px;
+  a {
+    display: block;
+    width: 300px;
+  }
+
+  @media screen and (max-width: 1340px) {
+    width: 940px;
   }
 
   @media screen and (max-width: 1000px) {
     width: 660px;
+
+    a {
+      width: 320px;
+    }
   }
 
   @media screen and (max-width: 720px) {
     width: calc(100% - 60px);
+
+    a {
+      width: 100%;
+    }
   }
 `;
 
