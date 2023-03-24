@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import LoginModal from "./LoginModal";
 
 const Container = styled.header`
   max-width: 1280px;
@@ -56,7 +57,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const handleClickLogin = () => {
-    dispatch(open(<h1>hello</h1>));
+    dispatch(open(<LoginModal />));
   };
 
   const handleClickLogout = () => {};
