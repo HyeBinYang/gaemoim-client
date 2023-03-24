@@ -16,8 +16,8 @@ const Wrapper = styled.span<{
   ${({ color }) =>
     color === "blue" &&
     css`
-      background-color: ${colors.blue[500]};
-      color: #fff;
+      background-color: ${colors.lightblue[50]};
+      color: ${colors.blue[400]};
     `}
 
   ${({ size }) =>

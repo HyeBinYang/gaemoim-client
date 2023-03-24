@@ -1,3 +1,6 @@
+import colors from "@/src/style/color";
+import { Post } from "@/src/types/post";
+import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
 import HomePostCard from "./HomePostCard";
@@ -5,10 +8,11 @@ import HomePostCard from "./HomePostCard";
 const Wrapper = styled.section`
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 20px;
+  gap: 20px 20px;
   width: 1260px;
   margin: 0 auto;
   padding: 20px 30px 40px;
+  background-color: ${colors.grey[100]};
 
   @media screen and (max-width: 1280px) {
     width: 960px;
@@ -23,15 +27,18 @@ const Wrapper = styled.section`
   }
 `;
 
-const HomePostList = () => {
+interface HomePostListProps {
+  posts: Post[];
+}
+
+const HomePostList: React.FC<HomePostListProps> = ({ posts }) => {
   return (
     <Wrapper>
-      <HomePostCard />
-      <HomePostCard />
-      <HomePostCard />
-      <HomePostCard />
-      <HomePostCard />
-      <HomePostCard />
+      {posts.map(post => (
+        <Link href={`/post/${post._id}`} key={post._id}>
+          <HomePostCard {...post} />
+        </Link>
+      ))}
     </Wrapper>
   );
 };

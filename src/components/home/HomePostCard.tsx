@@ -4,11 +4,12 @@ import styled from "styled-components";
 import Badge from "../common/Badge";
 import { CiRead } from "react-icons/ci";
 import { FaRegComment } from "react-icons/fa";
+import { Post } from "@/src/types/post";
+import { format } from "date-fns";
 
 const Wrapper = styled.div`
   width: 300px;
   height: 300px;
-  border: 1px solid ${colors.grey[300]};
   border-radius: 12px;
   padding: 40px 20px;
   box-sizing: border-box;
@@ -35,7 +36,7 @@ const Top = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
 
   .top__left {
     display: flex;
@@ -46,11 +47,8 @@ const Top = styled.div`
 const Title = styled.h4`
   font-size: 24px;
   font-weight: 700;
-  margin-bottom: 12px;
-`;
-
-const Description = styled.p`
-  font-size: 18px;
+  line-height: 28px;
+  color: ${colors.grey[900]};
   flex: 1;
 `;
 
@@ -93,38 +91,39 @@ const Footer = styled.div`
   }
 `;
 
-const HomePostCard = () => {
+const HomePostCard: React.FC<Post> = ({ ...props }) => {
   return (
     <Wrapper>
       <Top>
         <div className="top__left">
+          {!props.isClosed && (
+            <Badge color="blue" size="medium">
+              모집중
+            </Badge>
+          )}
           <Badge color="blue" size="medium">
-            모집중
-          </Badge>
-          <Badge color="blue" size="medium">
-            스터디
+            {props.type === "1" ? "프로젝트" : "스터디"}
           </Badge>
         </div>
       </Top>
-      <Title>title</Title>
-      <Description>description</Description>
-      <CreatedAt>2023.04.01</CreatedAt>
+      <Title>{props.title}</Title>
+      <CreatedAt>{format(new Date(props.createdAt), "yyyy.MM.dd")}</CreatedAt>
       <Footer>
         <div className="footer__left">
-          <span>문어햄</span>
+          <span>{props.author.nickName}</span>
         </div>
         <div className="footer__right">
           <span>
             <div>
               <CiRead size={24} color={colors.grey[500]} />
             </div>
-            151
+            {props.views}
           </span>
           <span>
             <div>
               <FaRegComment size={17} color={colors.grey[500]} />
             </div>
-            12
+            {props.totalComments}
           </span>
         </div>
       </Footer>

@@ -1,7 +1,9 @@
+import { setTab, toggleOnlyRecruiting } from "@/src/store/home";
+import { useAppSelector } from "@/src/store/hooks";
 import colors from "@/src/style/color";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import Dropdown from "../common/Dropdown";
 import Toggle from "../common/Toggle";
 
 const Wrapper = styled.section`
@@ -16,15 +18,19 @@ const Wrapper = styled.section`
 const Left = styled.ul`
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 25px;
 
   li {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 600;
     color: ${colors.grey[500]};
     cursor: pointer;
 
     &:hover {
+      color: ${colors.grey[900]};
+    }
+
+    &.active {
       color: ${colors.grey[900]};
     }
   }
@@ -34,31 +40,41 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
+
+  .toggle__title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-right: 10px;
+  }
 `;
 
 const HomeTab = () => {
-  const [toggle, setToggle] = useState(false);
+  const { tab, onlyRecruiting } = useAppSelector(state => state.homeReducer);
+  const dispatch = useDispatch();
 
   return (
     <Wrapper>
       <Left>
-        <li>전체</li>
-        <li>프로젝트</li>
-        <li>스터디</li>
+        <li className={tab === "all" ? "active" : ""} onClick={() => dispatch(setTab("all"))}>
+          전체
+        </li>
+        <li className={tab === "project" ? "active" : ""} onClick={() => dispatch(setTab("project"))}>
+          프로젝트
+        </li>
+        <li className={tab === "study" ? "active" : ""} onClick={() => dispatch(setTab("study"))}>
+          스터디
+        </li>
       </Left>
 
       <Right>
-        <Dropdown />
         <Toggle
           left
           color="primary"
           size="small"
-          checked={toggle}
-          onClick={e => {
-            setToggle(!toggle);
-          }}
+          checked={onlyRecruiting}
+          onClick={() => dispatch(toggleOnlyRecruiting())}
         >
-          <h3>모집 중</h3>
+          <h3 className="toggle__title">모집 중</h3>
         </Toggle>
       </Right>
     </Wrapper>
