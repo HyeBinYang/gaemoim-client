@@ -2,10 +2,12 @@ import { combineReducers } from "redux";
 import { HYDRATE } from "next-redux-wrapper";
 import modalReducer from "./modal";
 import homeReducer from "./home";
+import registerReducer from "./register";
 
 const combinedReducer = combineReducers({
   modalReducer,
   homeReducer,
+  registerReducer,
 });
 
 const rootReducer: typeof combinedReducer = (state, action) => {
